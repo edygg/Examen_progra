@@ -9,8 +9,8 @@ Reina::Reina(ENUM_COLOR color): Pieza(color){
 bool Reina::esMovimientoValido(Posicion* origen, Posicion* destino ){
 	Posicion x = Posicion(origen->getX(),origen->getY()); 	
  	Posicion y = Posicion(origen->getX(),origen->getY());
-	Alfil temp(NEGRO);
-	Torre temp2(NEGRO);		
+	Alfil temp;
+	Torre temp2;		
 	if(temp.esMovimientoValido(&x, &y) && temp2.esMovimientoValido(&x,&y))
 		return true;
 		
