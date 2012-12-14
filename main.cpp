@@ -12,10 +12,10 @@ int main(int argc, char *argv[])
     int opcion;
     string jugador1 = "1", jugador2 = "2";
     string jugadorActual = jugador1;
+    Ajedrez ajedrez;
 
     do
-    {
-        Ajedrez ajedrez;
+    {        
         ajedrez.imprimir();
 
         Posicion* p1;
