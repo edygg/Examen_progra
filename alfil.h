@@ -8,7 +8,7 @@
 class Alfil: public Pieza{
 	
 	public:
-		Alfil(ENUM_COLOR);
+		Alfil(ENUM_COLOR = NULO);
 		virtual ~Alfil();	
 		virtual bool esMovimientoValido(Posicion*,Posicion*);
 		virtual void imprimir();

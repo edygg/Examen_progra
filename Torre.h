@@ -8,7 +8,7 @@
 class Torre:public Pieza{
   Posicion* pos;
 public:
-  Torre(ENUM_COLOR);
+  Torre(ENUM_COLOR = NULO);
   ~Torre();
   bool esMovimientoValido(Posicion*, Posicion*);
   void imprimir();
