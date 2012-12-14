@@ -153,6 +153,20 @@ bool Ajedrez::hayPiezaEnMedio(Posicion* ini, Posicion* fin) {
 							}
 						}
 					}
+				} else {
+					if (ini->getY() > fin->getY()) {
+						for (int i = ini->getX(), j = ini->getY(); i > fin->getX(); i--, j--) {
+							if (tablero[j][i]->getTipo() != VACIA) {
+								return true;
+							}
+						}
+					} else {
+						for (int i = ini->getX(), j = ini->getY(); i > fin->getX(); i--, j++) {
+							if (tablero[j][i]->getTipo() != VACIA) {
+								return true;
+							}
+						}
+					}
 				}
 			}
 		break; 
