@@ -11,7 +11,7 @@ bool Reina::esMovimientoValido(Posicion* origen, Posicion* destino ){
  	Posicion y = Posicion(origen->getX(),origen->getY());*/
 	Alfil temp;
 	Torre temp2;		
-	if(temp.esMovimientoValido(origen, destino) && temp2.esMovimientoValido(origen, destino))
+	if(temp.esMovimientoValido(origen, destino) || temp2.esMovimientoValido(origen, destino))
 		return true;
 		
 	return false;
