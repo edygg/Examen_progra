@@ -13,7 +13,10 @@ Alfil::~Alfil(){}
 bool Alfil::esMovimientoValido(Posicion* origen, Posicion * destino){
 	
 	if(fabs(origen->getX()-destino->getX())==fabs(origen->getY()-destino->getY()))
+	{
+		cout << "Si llego!"<< endl;
 		return true;
+	}
 	return false;
 }
 

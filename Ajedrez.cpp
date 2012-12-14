@@ -141,13 +141,13 @@ bool Ajedrez::hayPiezaEnMedio(Posicion* ini, Posicion* fin) {
 			{
 				if (ini->getX() > fin->getX()) {
 					if (ini->getY() > fin->getY()) {
-						for (int i = ini->getX(), j = ini->getY(); i < fin->getX(); i--, j++) {
+						for (int i = ini->getX(), j = ini->getY(); i < fin->getX(); i++, j--) {
 							if (tablero[i][j]->getTipo() != VACIA) {
 								return true;
 							}
 						}
 					} else {
-						for (int i = ini->getX(), j = ini->getY(); i < fin->getX(); i++, j++) {
+						for (int i = ini->getX(), j = ini->getY(); i < fin->getX(); i--, j++) {
 							if (tablero[i][j]->getTipo() != VACIA) {
 								return true;
 							}
@@ -221,7 +221,7 @@ bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
 		cout << "Paso 1" << endl;
 		return false;
 	} else {
-		if (!tablero[ini->getY()][fin->getX()]->esMovimientoValido(ini, fin)) {
+		if (tablero[ini->getY()][ini->getX()]->esMovimientoValido(ini, fin) == false) {
 			cout << "Paso 2" << endl;
 			return false;
 		} if (hayPiezaEnMedio(ini, fin)) {
