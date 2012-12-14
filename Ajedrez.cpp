@@ -278,17 +278,25 @@ bool Ajedrez::hayPiezaEnMedio(Posicion* ini, Posicion* fin) {
 }
 
 bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
-	if (estaVacia(ini) || (!estaVacia(fin) || tablero[ini->getY()][ini->getX()]->getColor() == tablero[fin->getY()][fin->getX()]->getColor())) {
+	if (estaVacia(ini) || tablero[ini->getY()][ini->getX()]->getColor() == tablero[fin->getY()][fin->getX()]->getColor()) {
 		cout << "Paso 1" << endl;
 		return false;
 	} else {
-		if (tablero[ini->getY()][ini->getX()]->esMovimientoValido(ini, fin) == false) {
+		if (!tablero[ini->getY()][ini->getX()]->esMovimientoValido(ini, fin) && hayPiezaEnMedio(ini, fin)) {
 			cout << "Paso 2" << endl;
 			return false;
-		} if (hayPiezaEnMedio(ini, fin)) {
-			cout << "Paso 3" << endl;
-			return false;
-		}
+		} else {
+			if (estaVacia(fin)) {
+				Pieza* tmp = tablero[fin->getY()][fin->getX()];
+				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
+				tablero[ini->getY()][ini->getX()] = tmp;
+			} else {
+				delete tablero[fin->getY()][fin->getX()];
+
+				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
+				tablero[ini->getY()][ini->getX()] = new Pieza();
+			}
+		} 
 	}
 
 	return true;
