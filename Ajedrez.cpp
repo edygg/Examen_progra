@@ -243,32 +243,33 @@ bool Ajedrez::hayPiezaEnMedio(Posicion* ini, Posicion* fin) {
 		case PEON:
 	{
 		if(tablero[ini->getX()][ini->getY()] -> getColor() == BLANCA){
-		if(ini->getX() == fin->getX()) {
-				for (int i = ini->getY() + 1; i <= fin->getY(); i++) {
-					if (tablero[i][ini->getX()]->getTipo() != VACIA)
-						return true;
-				}
-			} else {
-				if (ini->getX() != fin->getX()) {
-					if(tablero[fin->getY()][fin->getX()]->getTipo() == VACIA || tablero[ini->getY()][ini->getX()]->getColor() == tablero[fin->getY()][fin->getX()]->getColor())
-						return true;
-				}
-			}
-		}
-		else{
-			if(tablero[ini->getX()][ini->getY()] -> getColor() == NEGRO){
 			if(ini->getX() == fin->getX()) {
-				for (int i = ini->getY() - 1; i >= fin->getY(); i--) {
-					if (tablero[i][ini->getX()]->getTipo() != VACIA)
-						return true;
-				}
-			} else {
-				if (ini->getX() != fin->getX()) {
-					if(tablero[fin->getY()][fin->getX()]->getTipo() == VACIA || tablero[ini->getY()][ini->getX()]->getColor() == tablero[fin->getY()][fin->getX()]->getColor())
-						return true;
+					for (int i = ini->getY() + 1; i <= fin->getY(); i++) {
+						if (tablero[i][ini->getX()]->getTipo() != VACIA)
+							return true;
+					}
+				} else {
+					if (ini->getX() != fin->getX()) {
+						if(tablero[fin->getY()][fin->getX()]->getTipo() == VACIA || tablero[ini->getY()][ini->getX()]->getColor() == tablero[fin->getY()][fin->getX()]->getColor())
+							return true;
+					}
 				}
 			}
-		}
+			else{
+				if(tablero[ini->getX()][ini->getY()] -> getColor() == NEGRO){
+					if(ini->getX() == fin->getX()) {
+						for (int i = ini->getY() - 1; i >= fin->getY(); i--) {
+							if (tablero[i][ini->getX()]->getTipo() != VACIA)
+								return true;
+						}
+					} else {
+						if (ini->getX() != fin->getX()) {
+							if(tablero[fin->getY()][fin->getX()]->getTipo() == VACIA || tablero[ini->getY()][ini->getX()]->getColor() == tablero[fin->getY()][fin->getX()]->getColor())
+								return true;
+						}
+					}
+				}
+			}
 		}
 		break;
 	}
