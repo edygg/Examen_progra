@@ -286,12 +286,17 @@ bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
 			cout << "Paso 2" << endl;
 			return false;
 		} else {
-			if (tablero[fin->getX()][fin->getY()]->getTipo() == VACIA) {
+			if (tablero[fin->getY()][fin->getX()]->getTipo() == VACIA) {
 				cout << "Paso 4" << endl;
-				Pieza* tmp = tablero[fin->getY()][fin->getX()];
-				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
-				tablero[ini->getY()][ini->getX()] = tmp;
+				
+				
+				tmp = *tablero[fin->getY()][fin->getX()];
+				tmp2 = *tablero[ini->getY()][ini->getX()];
+				
+				tablero[fin->getY()][fin->getX()] = &tmp2;
+				tablero[ini->getY()][ini->getX()] = &tmp;
 			} else {
+				cout << "Paso 5" << endl;
 				delete tablero[fin->getY()][fin->getX()];
 
 				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
