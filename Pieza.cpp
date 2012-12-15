@@ -26,3 +26,8 @@ ENUM_PIEZA Pieza::getTipo() {
 ENUM_COLOR Pieza::getColor() {
 	return color;
 }
+
+const Pieza& Pieza::operator=(const Pieza& val) {
+	this->tipo = val.tipo;
+	this->color = val.color;
+}

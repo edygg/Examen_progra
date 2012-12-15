@@ -11,6 +11,7 @@ class Ajedrez {
 	vector<Movimiento*> movimientos;
 public: 
 	Ajedrez();
+	void crearArchivo();
 	void imprimirCapturas();
 	void imprimirBitacora();
 	ENUM_COLOR piezaColor(Posicion*);

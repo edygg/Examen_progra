@@ -288,18 +288,22 @@ bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
 		} else {
 			if (tablero[fin->getY()][fin->getX()]->getTipo() == VACIA) {
 				cout << "Paso 4" << endl;
+				Pieza* save;
+				save = tablero[ini->getY()][ini->getX()];
+				save->imprimir();
 				Pieza* tmp; 
 				tmp = tablero[fin->getY()][fin->getX()];
 				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
 				tablero[ini->getY()][ini->getX()] = tmp;
-				movimientos.push_back(new Movimiento(ini, fin, tablero[fin->getY()][fin->getX()]));
+				movimientos.push_back(new Movimiento(*ini, *fin, *save));
 			} else {
 				cout << "Paso 5" << endl;
 				capturas.push_back(tablero[fin->getY()][fin->getX()]);
-
+				Pieza* save;
+				save = tablero[ini->getY()][ini->getX()];
 				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
 				tablero[ini->getY()][ini->getX()] = new Pieza();
-				movimientos.push_back(new Movimiento(ini, fin, tablero[fin->getY()][fin->getX()]));
+				movimientos.push_back(new Movimiento(*ini, *fin, *save));
 			}
 		} 
 	}

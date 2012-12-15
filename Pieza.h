@@ -17,6 +17,7 @@ public:
 	void setTipo(ENUM_PIEZA);
 	ENUM_PIEZA getTipo();
 	ENUM_COLOR getColor();
+	const Pieza& operator=(const Pieza&);
 };
 
 #endif
