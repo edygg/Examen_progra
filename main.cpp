@@ -22,10 +22,12 @@ int main(int argc, char *argv[])
             cout << "\t1. Jugar" << endl
                  << "\t2. Crear archivo" << endl
                  << "\t3. Cargar archivo" << endl
-                 << "\t4. Salir" << endl
+                 << "\t4. Imprimir bitácora" << endl
+                 << "\t5. Imprimir capturas" << endl
+                 << "\t6. Salir" << endl
                  << "Ingrese una opcion: ";
             cin >> opcion;
-        } while (opcion < 1 || opcion > 4);
+        } while (opcion < 1 || opcion > 6);
         switch (opcion){
             case 1:
                 {
@@ -69,12 +71,18 @@ int main(int argc, char *argv[])
                     jugadorActual = (jugadorActual == jugador1 ? jugador2 : jugador1);
                 }
             break;
+
+            case 5:
+                {
+                    ajedrez.imprimirCapturas();
+                }
+            break;
         }
         
 
         
 
-    } while (opcion != 4);
+    } while (opcion != 6);
 
     return 0;
 }

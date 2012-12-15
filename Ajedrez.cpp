@@ -294,7 +294,7 @@ bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
 				tablero[ini->getY()][ini->getX()] = tmp;
 			} else {
 				cout << "Paso 5" << endl;
-				delete tablero[fin->getY()][fin->getX()];
+				capturas.push_back(tablero[fin->getY()][fin->getX()]);
 
 				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
 				tablero[ini->getY()][ini->getX()] = new Pieza();
@@ -307,4 +307,15 @@ bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
 
 ENUM_COLOR Ajedrez::piezaColor(Posicion* pos) {
 	return tablero[pos->getY()][pos->getX()]->getColor();
+}
+
+void Ajedrez::imprimirCapturas() {
+	cout << endl << "Piezas capturadas" << endl
+		 << "MAYUS: Blancas" << endl << "minus: Negras" << endl
+		 << "---------------------------------------------" << endl;
+	for (int i = 0; i < capturas.size(); i++) {
+		capturas[i]->imprimir();
+		cout << endl;
+	}
+	cout << "---------------------------------------------" << endl;
 }

@@ -1,11 +1,15 @@
 #ifndef AJEDREZ_H
 #define AJEDREZ_H
 #include "Pieza.h"
+#include <vector>
+using namespace std;
 
 class Ajedrez {
 	Pieza* tablero[8][8];
+	vector<Pieza*> capturas;
 public: 
 	Ajedrez();
+	void imprimirCapturas();
 	ENUM_COLOR piezaColor(Posicion*);
 	void imprimir();
 	bool moverPieza(Posicion*, Posicion*);
