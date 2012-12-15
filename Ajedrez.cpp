@@ -292,12 +292,14 @@ bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
 				tmp = tablero[fin->getY()][fin->getX()];
 				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
 				tablero[ini->getY()][ini->getX()] = tmp;
+				movimientos.push_back(new Movimiento(ini, fin, tablero[fin->getY()][fin->getX()]));
 			} else {
 				cout << "Paso 5" << endl;
 				capturas.push_back(tablero[fin->getY()][fin->getX()]);
 
 				tablero[fin->getY()][fin->getX()] = tablero[ini->getY()][ini->getX()];
 				tablero[ini->getY()][ini->getX()] = new Pieza();
+				movimientos.push_back(new Movimiento(ini, fin, tablero[fin->getY()][fin->getX()]));
 			}
 		} 
 	}
@@ -318,4 +320,14 @@ void Ajedrez::imprimirCapturas() {
 		cout << endl;
 	}
 	cout << "---------------------------------------------" << endl;
+}
+
+
+void Ajedrez::imprimirBitacora() {
+	cout << endl << "Bitácora" << endl
+		 << "______________________________________________" << endl;
+	for(int i = 0; i < movimientos.size(); i++) {
+		movimientos[i]->imprimir();
+	}
+	cout << "______________________________________________" << endl;
 }

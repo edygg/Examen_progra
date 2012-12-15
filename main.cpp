@@ -72,6 +72,12 @@ int main(int argc, char *argv[])
                 }
             break;
 
+            case 4:
+                {
+                    ajedrez.imprimirBitacora();
+                }
+            break;
+
             case 5:
                 {
                     ajedrez.imprimirCapturas();
