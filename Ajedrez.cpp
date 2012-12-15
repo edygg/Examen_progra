@@ -89,9 +89,11 @@ void Ajedrez::imprimir() {
 
 bool Ajedrez::estaVacia(Posicion* pos) {
 	if (tablero[pos->getY()][pos->getX()]->getTipo() == VACIA) {
+		cout << "esta vacia: " << true;
 		return true;
 	} 
 
+	cout << "esta vacia:" << false;
 	return false;
 }
 
@@ -105,12 +107,14 @@ bool Ajedrez::hayPiezaEnMedio(Posicion* ini, Posicion* fin) {
 					if (ini->getY() < fin->getY()) {
 						for (int i = ini->getY(); i < fin->getY(); i++) {
 							if (tablero[i][ini->getX()]->getTipo() != VACIA){
+								cout << "Esta vacia: " << true;
 								return true;
 							}
 						}
 					} else {
 						for (int i = ini->getY(); i > fin->getY(); i--) {
 							if (tablero[i][ini->getX()]->getTipo() != VACIA){
+								cout << "esta vacia: " << true;
 								return true;
 							}
 						}
@@ -122,12 +126,14 @@ bool Ajedrez::hayPiezaEnMedio(Posicion* ini, Posicion* fin) {
 						if (ini->getX() < fin->getX()) {
 							for (int i = ini->getX(); i < fin->getX(); i++) {
 								if (tablero[ini->getY()][i]->getTipo() != VACIA) {
+									cout << "Esta vacia: " << true;
 									return true;
 								}
 							}
 						} else {
 							for (int i = ini->getY(); i > fin->getY(); i--) {
 								if (tablero[ini->getY()][i]->getTipo() != VACIA) {
+									cout << "esta vacia: " << true;
 									return true;
 								}
 							}
@@ -135,6 +141,9 @@ bool Ajedrez::hayPiezaEnMedio(Posicion* ini, Posicion* fin) {
 					}
 				}
 			}
+
+			cout << "Esta vacia: " << false;
+			return(false);
 		break;
 
 		case ALFIL:
@@ -278,11 +287,11 @@ bool Ajedrez::hayPiezaEnMedio(Posicion* ini, Posicion* fin) {
 }
 
 bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
-	if (estaVacia(ini) || tablero[ini->getY()][ini->getX()]->getColor() == tablero[fin->getY()][fin->getX()]->getColor()) {
+	if (estaVacia(ini) && tablero[ini->getY()][ini->getX()]->getColor() == tablero[fin->getY()][fin->getX()]->getColor()) {
 		cout << "Paso 1" << endl;
 		return false;
 	} else {
-		if (!tablero[ini->getY()][ini->getX()]->esMovimientoValido(ini, fin) && hayPiezaEnMedio(ini, fin)) {
+		if (!tablero[ini->getY()][ini->getX()]->esMovimientoValido(ini, fin) || hayPiezaEnMedio(ini, fin)) {
 			cout << "Paso 2" << endl;
 			return false;
 		} else {
