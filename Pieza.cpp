@@ -16,7 +16,7 @@ Pieza::~Pieza() {
 bool Pieza::esMovimientoValido(Posicion* origen, Posicion* destino) {}
 
 void Pieza::imprimir() {
-	cout << " ";
+	cout << "*";
 }
 
 ENUM_PIEZA Pieza::getTipo() {
