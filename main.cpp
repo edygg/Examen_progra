@@ -42,6 +42,12 @@ int main(int argc, char *argv[])
             p1 = new Posicion(x1, y1); 
             p2 = new Posicion(x2, y2);
 
+            if (jugadorActual == jugador1 && ajedrez.piezaColor(p1) == NEGRO)
+                break;
+
+            if (jugadorActual == jugador2 && ajedrez.piezaColor(p1) == BLANCA)
+                break;
+
         } while (!ajedrez.moverPieza(p1, p2));
 
         delete p1;
@@ -49,7 +55,7 @@ int main(int argc, char *argv[])
 
         jugadorActual = (jugadorActual == jugador1 ? jugador2 : jugador1);
 
-        cout << "\n\nDesea salir: " << endl;
+        cout << "\n\nDesea salir: (1 = si)" << endl;
         cin >> opcion;
 
     } while (opcion != 1);

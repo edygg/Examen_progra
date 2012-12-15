@@ -6,6 +6,7 @@ class Ajedrez {
 	Pieza* tablero[8][8];
 public: 
 	Ajedrez();
+	ENUM_COLOR piezaColor(Posicion*);
 	void imprimir();
 	bool moverPieza(Posicion*, Posicion*);
 	void inicializarTablero();

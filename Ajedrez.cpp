@@ -304,3 +304,7 @@ bool Ajedrez::moverPieza(Posicion* ini, Posicion* fin) {
 
 	return true;
 }
+
+ENUM_COLOR Ajedrez::piezaColor(Posicion* pos) {
+	return tablero[pos->getY()][pos->getX()]->getColor();
+}
