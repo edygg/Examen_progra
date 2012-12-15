@@ -89,7 +89,6 @@ void Ajedrez::imprimir() {
 
 bool Ajedrez::estaVacia(Posicion* pos) {
 	if (tablero[pos->getY()][pos->getX()]->getTipo() == VACIA) {
-		cout << "esta vacia: " << true;
 		return true;
 	} 
 
